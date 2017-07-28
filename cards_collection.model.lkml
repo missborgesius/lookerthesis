@@ -17,6 +17,10 @@ explore: distinct_cards {
     sql_on: ${distinct_cards.multiverse_id}=${links.multiverse_id} ;;
     relationship: many_to_many
   }
+  join: images {
+    sql_on: ${distinct_cards.multiverse_id}=${images.multiverse_id} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: prices_current {

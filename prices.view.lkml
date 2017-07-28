@@ -1,7 +1,7 @@
 view: prices {
   sql_table_name: hilary_thesis.prices ;;
 
-  dimension_group: date {
+  dimension_group: price_date {
     type: time
     timeframes: [
       raw,
@@ -13,8 +13,9 @@ view: prices {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.date ;;
+    sql: DATE(${TABLE}.date) ;;
   }
+
 
   dimension: multiverse_id {
     type: number
