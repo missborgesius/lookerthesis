@@ -31,6 +31,7 @@ view: cards_gameplay {
     type: number
     sql: (${power}+${toughness}/2) ;;
     value_format: "0.00"
+    description: "Average of Power and Toughness"
   }
 
   dimension: loyalty {
@@ -125,10 +126,13 @@ view: cards_gameplay {
     type: number
     sql: ${stat_index}/${cmc} ;;
     value_format: "0.00"
+    description: "Stat Index over Converted Mana Cost"
+    label: "Mana Index"
   }
   dimension: set_id {
     type: string
     sql: ${TABLE}.set_id ;;
+    hidden: yes
   }
 
   measure: count {

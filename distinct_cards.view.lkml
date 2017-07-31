@@ -12,16 +12,42 @@ view: distinct_cards {
  dimension: cmc {
     type: number
     sql: ${TABLE}.cmc ;;
+    label: "Converted Mana Cost"
   }
 
   dimension: color_identity {
     type: string
-    sql: ${TABLE}.color_identity ;;
+    case: {
+      when: {
+        sql: ${TABLE}.color_identity = "B";;
+        label: "Black"
+      }
+      when: {
+        sql: ${TABLE}.color_identity = "U";;
+        label: "Blue"
+      }
+      when: {
+        sql: ${TABLE}.color_identity = "R";;
+        label: "Red"
+      }
+      when: {
+        sql: ${TABLE}.color_identity = "G";;
+        label: "Green"
+      }
+      when: {
+        sql: ${TABLE}.color_identity = "W";;
+        label: "White"
+      }
+    }
+    label: "Color Identity"
+    html: <a href="{{ link }}" style="color:{{value}}" target="_blank">{{ rendered_value }}</a>;;
+
   }
 
   dimension: layout {
     type: string
     sql: ${TABLE}.layout ;;
+    hidden: yes
   }
 
   dimension: loyalty {

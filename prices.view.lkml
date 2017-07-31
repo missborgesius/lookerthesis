@@ -1,7 +1,8 @@
 view: prices {
+  view_label: "Pricing History"
   sql_table_name: hilary_thesis.prices ;;
 
-  dimension_group: price_date {
+  dimension_group: collection {
     type: time
     timeframes: [
       raw,

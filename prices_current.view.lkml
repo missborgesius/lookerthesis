@@ -1,4 +1,5 @@
 view: prices_current {
+  view_label: "Current Pricing"
   derived_table: {
   sql: SELECT a.multiverse_id, a.usd, a.date FROM
 hilary_thesis.prices a
@@ -24,5 +25,12 @@ INNER JOIN (
       timeframes: [date]
       sql: ${TABLE}.a.date ;;
       label: "Date of Most Recent Pricing Data"
+    }
+
+    dimension_group: today{
+      type: time
+      timeframes: [date]
+      sql:CURRDATE() ;;
+      label: "Today's Date"
     }
     }

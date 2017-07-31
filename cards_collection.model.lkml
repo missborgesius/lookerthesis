@@ -35,4 +35,8 @@ explore: prices_current {
     sql_on: ${prices_current.multiverse_id}=${links.multiverse_id} ;;
     relationship: one_to_many
   }
+  join: images {
+    sql_on: ${prices_current.multiverse_id}=${images.multiverse_id} ;;
+    relationship: one_to_one
+  }
 }
