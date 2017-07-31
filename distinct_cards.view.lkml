@@ -79,10 +79,6 @@ view: distinct_cards {
     type: string
     sql: ${TABLE}.name ;;
     link: {
-      label: "View Card Image"
-      url: "{{links.image}}"
-    }
-    link: {
       label: "Explore on Scryfall"
       url: "{{links.scryfall}}"
       icon_url: "https://scryfall.com/favicon.ico"
@@ -129,7 +125,7 @@ view: distinct_cards {
     sql: ${TABLE}.standard_legal ;;
   }
 
-  dimension: thoughness {
+  dimension: toughness {
     type: string
     sql: ${TABLE}.thoughness ;;
   }
@@ -159,5 +155,6 @@ view: distinct_cards {
   measure: average_cmc {
     type: average
     sql: ${TABLE}.cmc ;;
+    value_format: "0.00"
   }
 }

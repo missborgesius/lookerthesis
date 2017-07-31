@@ -15,6 +15,11 @@ view: cards_gameplay {
       url: "{{links.scryfall.value}}"
       icon_url: "https://scryfall.com/favicon/ico"
     }
+    link: {
+      label: "Purchase on Ebay"
+      url: "{{links.ebay.value}}"
+      icon_url: "https://ebayl.com/favicon/ico"
+    }
   }
 
   dimension: toughness {

@@ -1,17 +1,17 @@
 view: types {
   sql_table_name: hilary_thesis.types ;;
 
-  dimension: string_field_0 {
+  dimension: type {
     type: string
     sql: ${TABLE}.string_field_0 ;;
   }
 
-  dimension: string_field_1 {
+  dimension: permanance {
     type: string
     sql: ${TABLE}.string_field_1 ;;
   }
 
-  dimension: string_field_2 {
+  dimension: speed {
     type: string
     sql: ${TABLE}.string_field_2 ;;
   }

@@ -18,6 +18,7 @@ INNER JOIN (
     dimension: current_price {
       type: number
       sql: ${TABLE}.a.usd ;;
+      value_format_name: usd
     }
 
    dimension_group: most_recent {
@@ -27,10 +28,4 @@ INNER JOIN (
       label: "Date of Most Recent Pricing Data"
     }
 
-    dimension_group: today{
-      type: time
-      timeframes: [date]
-      sql:CURRDATE() ;;
-      label: "Today's Date"
-    }
     }
