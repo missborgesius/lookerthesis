@@ -148,7 +148,6 @@ view: distinct_cards {
 
   measure: count {
     type: count
-    approximate_threshold: 100000
     drill_fields: [set_name, name]
   }
 

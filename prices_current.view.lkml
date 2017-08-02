@@ -27,5 +27,31 @@ INNER JOIN (
       sql: ${TABLE}.a.date ;;
       label: "Date of Most Recent Pricing Data"
     }
+   measure: avg_current_price {
+     type: average
+    sql: ${current_price} ;;
+    value_format_name: usd
+   }
+
+  measure: max_current_price {
+    type: max
+    sql: ${current_price} ;;
+    value_format_name: usd
+
+  }
+
+  measure: min_current_price {
+    type: min
+    sql: ${current_price} ;;
+    value_format_name: usd
+  }
+
+  measure: total_price {
+    type: sum
+    sql: ${current_price} ;;
+    value_format_name: usd
+
+  }
+
 
     }

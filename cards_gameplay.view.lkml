@@ -140,6 +140,14 @@ view: cards_gameplay {
     hidden: yes
   }
 
+ dimension: subtype {
+   type: string
+  sql: REGEXP_EXTRACT(${type_line}, '— ([A-Za-z ,]*)') ;;
+ }
+
+
+
+
   measure: count {
     type: count
   }
@@ -155,4 +163,196 @@ view: cards_gameplay {
     sql: ${mana_index} ;;
     value_format: "0.00"
   }
-}
+  }
+
+
+
+  # dimension: deathtouch {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Deathtouch') =  true
+  #             OR REGEXP_MATCH(${oracle_text},'[,] deathtouch[ \n]') = true ;;
+  #       label: "has deathtouch"
+  #     }
+  #     # when: {
+  #     #   sql: REGEXP_MATCH(${oracle_text},'(\Qhave\E|\Qgains\E|\Qhas\E|\Qgain\E|\Qand\E) deathtouch') =  true ;;
+  #     #   label: "grants deathtouch"
+  #     # }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # measure: deathtouch_count {
+  #   type: number
+  #   sql: COUNT(*) WHERE ${deathtouch}="has deathtouch" ;;
+  #   view_label: "Keywords"
+  # }
+
+  # dimension: defender {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Defender') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] defender[ \n]') = true ;;
+  #       label: "has defender"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: double_strike {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Double strike') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] double strike[ \n]') = true ;;
+  #       label: "has double strike"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: first_strike {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'First strike') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] first strike[ \n]') = true ;;
+  #       label: "has first strike"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: flash {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Flash') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] flash[ \n]') = true ;;
+  #       label: "has flash"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: flying {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Flying') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] flying[ \n]') = true ;;
+  #       label: "has flying"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: haste {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Haste') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] haste[ \n]') = true ;;
+  #       label: "has haste"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: hexproof {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Hexproof') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] hexproof[ \n]') = true ;;
+  #       label: "has hexproof"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: indestructible {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Indestructible') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] indestructible[ \n]') = true ;;
+  #       label: "has indestructible"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: lifelink {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Lifelink') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] lifelink[ \n]') = true ;;
+  #       label: "has lifelink"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: menace {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Menace') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] menace[ \n]') = true ;;
+  #       label: "has menace"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: prowess {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Prowess') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] prowess[ \n]') = true ;;
+  #       label: "has prowess"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: reach {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Reach') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] reach[ \n]') = true ;;
+  #       label: "has reach"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: trample {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Trample') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] trample[ \n]') = true ;;
+  #       label: "has trample"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }
+
+  # dimension: vigilance {
+  #   view_label: "Keywords"
+  #   case: {
+  #     when: {
+  #       sql:  REGEXP_MATCH(${oracle_text},'Vigilance') =  true
+  #         OR REGEXP_MATCH(${oracle_text},'[,] vigilance[ \n]') = true ;;
+  #       label: "has vigilance"
+  #     }
+  #   }
+  #   drill_fields: [name]
+  # }

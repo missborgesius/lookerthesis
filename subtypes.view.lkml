@@ -2,6 +2,7 @@ view: subtypes {
   sql_table_name: hilary_thesis.subtypes ;;
 
   dimension: name {
+    primary_key: yes
     type: string
     sql: ${TABLE}.name ;;
   }
@@ -18,7 +19,7 @@ view: subtypes {
 
   measure: count {
     type: count
-    approximate_threshold: 100000
+
     drill_fields: [name]
   }
 }
