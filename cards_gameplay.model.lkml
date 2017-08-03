@@ -14,7 +14,7 @@ explore: cards_gameplay {
     relationship: one_to_many
   }
   join: subtypes {
-    sql_on:LOWER(${cards_gameplay.type_line}) LIKE CONCAT('%',' ',${subtypes.name},'%')  ;;
+    sql_on: ${cards_gameplay.name}=${subtypes.card_name};;
     relationship: many_to_many
     type: inner
   }

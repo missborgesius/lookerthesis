@@ -22,21 +22,3 @@ explore: distinct_cards {
     relationship: many_to_one
   }
 }
-
-explore: prices_current {
-  label: "Current Pricing Data"
-  sql_always_where: ${prices_current.current_price} is not null;;
-  join: distinct_cards {
-    sql_on: ${prices_current.multiverse_id}=${distinct_cards.multiverse_id} ;;
-    relationship: one_to_many
-    type: inner
-  }
-  join: links {
-    sql_on: ${prices_current.multiverse_id}=${links.multiverse_id} ;;
-    relationship: one_to_many
-  }
-  join: images {
-    sql_on: ${prices_current.multiverse_id}=${images.multiverse_id} ;;
-    relationship: one_to_one
-  }
-}
