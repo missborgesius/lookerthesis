@@ -1,8 +1,8 @@
 view: cards_gameplay {
   derived_table: {
-   sql:SELECT name, toughness, power, loyalty, oracle_text, mana_cost, type_line, rarity, cmc, vintage_legal, standard_legal, modern_legal, color_identity, set_id, layout
+   sql:SELECT DISTINCT name, toughness, power, loyalty, oracle_text, mana_cost, type_line, rarity, cmc, vintage_legal, standard_legal, modern_legal, set_id
         FROM hilary_thesis.cards_clean
-        GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+        GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
         ;;
   }
 
@@ -12,24 +12,24 @@ view: cards_gameplay {
     primary_key: yes
     link: {
       label: "Explore on Scryfall"
-      url: "{{links.scryfall.value}}"
+      url: "{{links.scryfall_uri._value}}"
       icon_url: "https://scryfall.com/favicon/ico"
     }
     link: {
       label: "Purchase on Ebay"
-      url: "{{links.ebay.value}}"
-      icon_url: "https://ebayl.com/favicon/ico"
+      url: "{{links.ebay._value}}"
+      icon_url: "https://ebay.com/favicon/ico"
     }
   }
 
   dimension: toughness {
     type: number
-    sql: INTEGER(${TABLE}.toughness) ;;
+    sql: CAST(${TABLE}.toughness as int64);;
   }
 
   dimension: power {
     type: number
-    sql: INTEGER(${TABLE}.power) ;;
+    sql: CAST(${TABLE}.power as int64);;
   }
 
   dimension: stat_index {
@@ -145,7 +145,34 @@ view: cards_gameplay {
   sql: REGEXP_EXTRACT(${type_line}, '— ([A-Za-z ,]*)') ;;
  }
 
+  # dimension: color_identity {
+  #   type: string
+  #   case: {
+  #     when: {
+  #       sql: ${TABLE}.color_identity = "B";;
+  #       label: "Black"
+  #     }
+  #     when: {
+  #       sql: ${TABLE}.color_identity = "U";;
+  #       label: "Blue"
+  #     }
+  #     when: {
+  #       sql: ${TABLE}.color_identity = "R";;
+  #       label: "Red"
+  #     }
+  #     when: {
+  #       sql: ${TABLE}.color_identity = "G";;
+  #       label: "Green"
+  #     }
+  #     when: {
+  #       sql: ${TABLE}.color_identity = "W";;
+  #       label: "White"
+  #     }
+  #   }
+  #   label: "Color Identity"
+  #   html: <a href="{{ link }}" style="color:{{value}}" target="_blank">{{ rendered_value }}</a>;;
 
+  # }
 
 
   measure: count {

@@ -4,6 +4,7 @@ view: types {
   dimension: type {
     type: string
     sql: ${TABLE}.string_field_0 ;;
+    primary_key: yes
   }
 
   dimension: permanance {

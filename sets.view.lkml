@@ -19,7 +19,7 @@ view: sets {
   }
 
   dimension: code {
-    primary_key: yes
+
     type: string
     sql: ${TABLE}.code ;;
     hidden: yes
@@ -73,12 +73,13 @@ view: sets {
     type: string
     sql: ${TABLE}.search_uri ;;
     hidden: yes
+    primary_key: yes
   }
 
   dimension: set_type {
     type: string
     sql: ${TABLE}.set_type ;;
-    hidden: yes
+
   }
 
   measure: count {
